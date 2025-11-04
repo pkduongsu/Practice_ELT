@@ -10,11 +10,11 @@ Project assets are organized around the Airflow DAGs and the embedded dbt projec
 
 ```mermaid
 graph TD
-    Scheduler["Airflow Scheduler"] --> Dag["dbt_dag (DbtDag)"]
-    Dag --> Cosmos["Astronomer Cosmos Adapter"]
-    Cosmos --> dbt["dbt CLI (simple_ELT project)"]
-    dbt --> Snowflake["Snowflake Warehouse"]
-    Snowflake --> Outputs["Modeled Tables & Views"]
+    Snowflake["Snowflake Warehouse"] --> dbt["dbt CLI (simple_ELT project)"]
+    dbt --> Cosmos["Astronomer Cosmos Adapter"]
+    Cosmos --> Dag["dbt_dag (DbtDag)"]
+    Dag --> Scheduler["Airflow Scheduler"]
+    Scheduler --> Outputs["Scheduled Runs, Logs, Alerts"]
 ```
 
 To run the pipeline locally, install the Astronomer CLI and start the stack:
